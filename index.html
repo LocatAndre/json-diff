@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="midnight">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Diff</title>
+    <meta
+      name="description"
+      content="Paste two JSON documents, choose a formatting mode, and compare the differences clearly and instantly."
+    />
+    <meta
+      name="keywords"
+      content="json diff, json compare, json comparison, compare json online, json difference viewer"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f1419" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON Diff" />
+    <meta
+      property="og:description"
+      content="Paste two JSON documents, choose a formatting mode, and compare the differences clearly and instantly."
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JSON Diff" />
+    <meta
+      name="twitter:description"
+      content="Paste two JSON documents, choose a formatting mode, and compare the differences clearly and instantly."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script>
+      (() => {
+        var themes = [
+          "midnight",
+          "light",
+          "ocean",
+          "forest",
+          "sunset",
+          "gruvbox",
+          "catppuccin-latte",
+          "catppuccin-frappe",
+          "catppuccin-macchiato",
+          "catppuccin-mocha",
+          "tokyo-night",
+          "tokyo-night-storm",
+          "tokyo-night-moon",
+          "tokyo-night-day",
+        ];
+        var lightThemes = ["light", "catppuccin-latte", "tokyo-night-day"];
+        var stored = localStorage.getItem("json-diff-theme");
+        var theme = themes.indexOf(stored) !== -1 ? stored : "midnight";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.classList.toggle(
+          "dark",
+          lightThemes.indexOf(theme) === -1,
+        );
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

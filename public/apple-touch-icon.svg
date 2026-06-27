@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <title>JSON Diff app icon</title>
+  <rect width="180" height="180" rx="40" fill="#0f1419" />
+  <path
+    d="M62 53.5C51 53.5 45 63.5 45 90s6 36.5 17 36.5"
+    stroke="#b8c4d4"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M118 53.5c11 0 17 10 17 36.5s-6 36.5-17 36.5"
+    stroke="#b8c4d4"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M72.5 82.5h18"
+    stroke="#ef4444"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M72.5 107.5h27"
+    stroke="#22c55e"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+</svg>

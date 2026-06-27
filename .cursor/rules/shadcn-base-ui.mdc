@@ -1,0 +1,31 @@
+---
+description: >-
+  UI components must use shadcn/ui primitives, shadcn CLI, or Base UI wrappers.
+  Applies when editing React components.
+globs: src/components/**/*.tsx
+alwaysApply: false
+---
+
+# shadcn / Base UI
+
+Prima di implementare UI, leggi e segui `.cursor/skills/shadcn-base-ui/SKILL.md`.
+
+## Priorità
+
+1. Componi da `@/components/ui/*` già presenti (inventario in `.cursor/skills/shadcn-base-ui/components.md`)
+2. Manca nel progetto ma esiste su shadcn → `bunx shadcn@latest add <nome>`
+3. Non in shadcn → primitivo in `src/components/ui/` su `@base-ui/react` (stile base-nova)
+
+## In questo progetto
+
+- Feature components in `src/components/`; primitivi in `src/components/ui/`
+- `cn()` per classi; token semantici da `index.css` (no colori hardcoded)
+- Testi utente via `m.*()` da `@/paraglide/messages.js`
+- Icone: `lucide-react`
+- Config shadcn: `components.json` (style **base-nova**)
+
+## Vietato
+
+- `<button>` / `<div>` custom al posto di primitivi esistenti
+- Nuove UI library (MUI, Chakra, Radix senza wrapper shadcn, ecc.)
+- Logica di business dentro `ui/` — solo presentazione e composizione
