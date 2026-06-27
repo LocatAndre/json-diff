@@ -77,83 +77,83 @@ export function EditorToolbar({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between">
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start">
-          <Field orientation="horizontal" className="w-full items-start sm:w-auto">
-            <FieldLabel htmlFor="format-mode" className="shrink-0 pt-2">
-              {m.format_label()}
-            </FieldLabel>
-            <div className="w-full space-y-1 sm:w-[260px]">
-              <Select
-                value={formatMode}
-                items={formatItems}
-                onValueChange={(value) => {
-                  if (value) {
-                    onFormatModeChange(value as FormatMode);
-                  }
-                }}
-              >
-                <SelectTrigger id="format-mode" className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {FORMAT_MODES.map((mode) => (
-                    <SelectItem key={mode} value={mode}>
-                      {getFormatLabel(mode)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FieldDescription>{getFormatDescription(formatMode)}</FieldDescription>
-            </div>
-          </Field>
-
-          <Field orientation="horizontal" className="w-full items-start sm:w-auto">
-            <FieldLabel htmlFor="array-mode" className="shrink-0 pt-2">
-              {m.array_mode_label()}
-            </FieldLabel>
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start">
+        <Field orientation="horizontal" className="w-full items-start sm:w-auto">
+          <FieldLabel htmlFor="format-mode" className="shrink-0 pt-2">
+            {m.format_label()}
+          </FieldLabel>
+          <div className="w-full space-y-1 sm:w-[260px]">
             <Select
-              value={arrayMode}
-              items={arrayItems}
+              value={formatMode}
+              items={formatItems}
               onValueChange={(value) => {
                 if (value) {
-                  onArrayModeChange(value as ArrayCompareMode);
+                  onFormatModeChange(value as FormatMode);
                 }
               }}
             >
-              <SelectTrigger
-                id="array-mode"
-                className="w-full min-w-[220px] sm:w-[240px]"
-              >
+              <SelectTrigger id="format-mode" className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                {ARRAY_MODES.map((mode) => (
+                {FORMAT_MODES.map((mode) => (
                   <SelectItem key={mode} value={mode}>
-                    {getArrayModeLabel(mode)}
+                    {getFormatLabel(mode)}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
+            <FieldDescription>{getFormatDescription(formatMode)}</FieldDescription>
+          </div>
+        </Field>
+
+        <Field orientation="horizontal" className="w-full items-start sm:w-auto">
+          <FieldLabel htmlFor="array-mode" className="shrink-0 pt-2">
+            {m.array_mode_label()}
+          </FieldLabel>
+          <Select
+            value={arrayMode}
+            items={arrayItems}
+            onValueChange={(value) => {
+              if (value) {
+                onArrayModeChange(value as ArrayCompareMode);
+              }
+            }}
+          >
+            <SelectTrigger
+              id="array-mode"
+              className="w-full min-w-[220px] sm:w-[240px]"
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {ARRAY_MODES.map((mode) => (
+                <SelectItem key={mode} value={mode}>
+                  {getArrayModeLabel(mode)}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </Field>
+
+        {arrayMode === "by-key" && (
+          <Field orientation="horizontal" className="w-full items-center sm:w-auto">
+            <FieldLabel htmlFor="array-key" className="shrink-0">
+              {m.array_key_label()}
+            </FieldLabel>
+            <Input
+              id="array-key"
+              value={arrayKey}
+              onChange={(event) => onArrayKeyChange(event.target.value)}
+              placeholder={m.array_key_placeholder()}
+              className="w-full min-w-[120px] sm:w-[160px]"
+            />
           </Field>
+        )}
+      </div>
 
-          {arrayMode === "by-key" && (
-            <Field orientation="horizontal" className="w-full items-center sm:w-auto">
-              <FieldLabel htmlFor="array-key" className="shrink-0">
-                {m.array_key_label()}
-              </FieldLabel>
-              <Input
-                id="array-key"
-                value={arrayKey}
-                onChange={(event) => onArrayKeyChange(event.target.value)}
-                placeholder={m.array_key_placeholder()}
-                className="w-full min-w-[120px] sm:w-[160px]"
-              />
-            </Field>
-          )}
-        </div>
-
-        <div className="flex flex-wrap justify-end gap-2">
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-wrap justify-start gap-2">
           <Button variant="outline" onClick={onShare}>
             {shareState === "success" ? <CheckIcon /> : <LinkIcon />}
             {shareLabel}
@@ -167,6 +167,8 @@ export function EditorToolbar({
           <Button variant="outline" onClick={onFormat}>
             {m.btn_format()}
           </Button>
+        </div>
+        <div className="flex flex-wrap justify-start gap-2">
           <Button variant="outline" onClick={onResetSession}>
             {m.btn_reset_session()}
           </Button>
